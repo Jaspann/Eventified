@@ -1,0 +1,40 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <PreferenceCategory app:title="@string/notification_header">
+
+        <SwitchPreferenceCompat
+            app:key="Announcements"
+            app:title="@string/announcement_title"
+            app:summary="@string/announcement_summary"
+            app:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            app:key="NewMeetings"
+            app:title="@string/create_meeting_title"
+            app:summary="@string/create_meeting_summary"
+            app:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            app:key="CanceledMeetings"
+            app:title="@string/cancel_meeting_title"
+            app:summary="@string/cancel_meeting_summary"
+            app:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            app:key="ProfileUpdates"
+            app:title="@string/profile_update_title"
+            app:summary="@string/profile_update_summary"
+            app:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/account_information_header">
+
+        <SwitchPreferenceCompat
+            app:key="share"
+            app:title="@string/share_title"
+            app:summary="@string/share_summary" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

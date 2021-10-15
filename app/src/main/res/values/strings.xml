@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Eventified</string>
+    <string name="title_activity_settings">OptionsMenu</string>
+
+    <!-- Preference Titles -->
+    <string name="notification_header">Notifications</string>
+    <string name="account_information_header">Account Information</string>
+
+    <!-- Notification Preferences -->
+    <string name="announcement_title">Club Announcements</string>
+    <string name="announcement_summary">Allow clubs to send notifications</string>
+    <string name="create_meeting_title">New Events</string>
+    <string name="create_meeting_summary">Send notifications whenever a club posts a new event</string>
+    <string name="cancel_meeting_title">Cancellations</string>
+    <string name="cancel_meeting_summary">Send notifications whenever a club cancels an event</string>
+    <string name="profile_update_title">Profile Updates</string>
+    <string name="profile_update_summary">Sends notifications when your profile is updated</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+
+
+    <!-- Notification Preferences -->
+    <string name="share_title">Share Schedule</string>
+    <string name="share_summary">Allow clubs to better understand when to best schedule meetings</string>
+
 </resources>
