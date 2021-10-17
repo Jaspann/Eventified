@@ -23,4 +23,8 @@
     <string name="share_title">Share Schedule</string>
     <string name="share_summary">Allow clubs to better understand when to best schedule meetings</string>
 
+    <!-- Main Activity -->
+    <string name="home_button_description">Home</string>
+    <string name="search_button_description">Search</string>
+
 </resources>
