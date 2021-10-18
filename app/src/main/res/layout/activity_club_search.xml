@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ClubSearch">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -35,22 +35,21 @@
                 android:scaleType="fitCenter"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
-                android:src="@drawable/logo_grey" />
+                android:src="@drawable/eventified_logo"
+                tools:ignore="ImageContrastCheck" />
 
             <ImageButton
                 android:id="@+id/SearchButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@null"
-                android:clickable="true"
                 android:contentDescription="@string/search_button_description"
                 android:gravity="center_vertical|center_horizontal"
                 android:scaleType="fitCenter"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
-                android:src="@drawable/eventified_search"
-                tools:ignore="ImageContrastCheck"
-                android:focusable="true" />
+                android:src="@drawable/search_grey"
+                tools:ignore="ImageContrastCheck" />
 
 
         </LinearLayout>
