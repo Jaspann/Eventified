@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eventified.MainActivity;
+import com.example.eventified.databinding.ActivitySignUpBinding;
 import com.example.eventified.ui.login.LoginActivity;
 import com.example.eventified.R;
 import com.example.eventified.ui.login.LoginViewModel;
@@ -33,14 +34,14 @@ import com.example.eventified.databinding.ActivityLoginBinding;
 public class SignUpActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-    private ActivityLoginBinding binding;
+    private ActivitySignUpBinding binding;
     private String tempEmail;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
@@ -48,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
-        final Button loginButton = binding.login;
+        final Button loginButton = binding.signUp;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -128,6 +129,8 @@ public class SignUpActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         });
+
+        configureLoginButton();
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -136,9 +139,19 @@ public class SignUpActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+
+    public void configureLoginButton()
+    {
+        Button logInOption = (Button) findViewById(R.id.logInOption);
+        logInOption.setOnClickListener(v -> {
+            super.onBackPressed();
+        });
+    }
+
 }
