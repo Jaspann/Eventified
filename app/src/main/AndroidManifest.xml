@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eventified">
         <activity
+            android:name=".ui.login.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login" />
+        <activity
             android:name=".ClubSearch"
             android:exported="false" />
         <activity
@@ -17,7 +24,7 @@
             android:exported="false"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
