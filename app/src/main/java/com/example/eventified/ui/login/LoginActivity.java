@@ -130,11 +130,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //configureSignupButton();
+        configureSignUpButton();
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        model.setDisplayName(tempEmail);
+        model.setUserInformation(tempEmail);
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
@@ -144,11 +144,11 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
-/*
-    public void configureSignupButton()
+
+    public void configureSignUpButton()
     {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
- */
+
 }

@@ -131,7 +131,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        model.setDisplayName(tempEmail);
+        model.setUserInformation(tempEmail);
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);

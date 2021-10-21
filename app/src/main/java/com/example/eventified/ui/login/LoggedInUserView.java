@@ -6,6 +6,7 @@ package com.example.eventified.ui.login;
 class LoggedInUserView {
     private String displayName;
     private String email;
+    private String domain;
     //... other data fields that may be accessible to the UI
 
     LoggedInUserView(String displayName) {this.displayName = displayName;}
@@ -14,22 +15,28 @@ class LoggedInUserView {
         return displayName;
     }
 
-    public void setDisplayName(String email)
+    public void setUserInformation(String email)
     {
-/*
-        String[] usernameParts = email.split(".");
-        usernameParts[1] = usernameParts[1].substring(0,usernameParts[1].indexOf('@') - 1);
 
-        int lastCharAskii = (int) usernameParts[1].charAt(usernameParts[1].length() - 1);
+        String first = email.substring(0, email.indexOf('.'));
+        first = first.substring(0, 1).toUpperCase() + first.substring(1);
 
-        //Check if last value is a number, and delete the char if is
+        String last = email.substring(email.indexOf('.') + 1, email.indexOf('@'));
+        last = last.substring(0, 1).toUpperCase() + last.substring(1);
+
+        String domain = email.substring(email.indexOf('@') + 1);
+
+
+        //Check if last char is a number, and delete the char if is
+        int lastCharAskii = (int) last.charAt(last.length() - 1);
+
         if(lastCharAskii > 47 && lastCharAskii < 58)
         {
-                usernameParts[1] = usernameParts[1].substring(0,usernameParts[1].length() - 2);
+            last = last.substring(0,last.length() - 1);
         }
-*/
-        String username = email.substring(0,email.indexOf('@'));
 
-        this.displayName = username;
+        this.displayName = first + " " + last;
+        this.email = email;
+        this.domain = domain;
     }
 }
