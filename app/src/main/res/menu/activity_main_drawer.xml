@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/menu_home" />
+        <item android:title="@string/account_clubs">
+            <menu>
+                <item
+                    android:id="@+id/nav_search"
+                    android:icon="@drawable/ic_baseline_outlined_flag_24"
+                    android:title="@string/menu_search" />
+                <item
+                    android:id="@+id/nav_eboard"
+                    android:icon="@drawable/ic_baseline_verified_24"
+                    android:title="@string/menu_eboard" />
+                <item
+                    android:id="@+id/nav_member"
+                    android:icon="@drawable/ic_baseline_check_circle_outline_24"
+                    android:title="@string/menu_member" />
+            </menu>
+        </item>
+        <item android:title="@string/account_menu">
+            <menu>
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_baseline_person_24"
+                    android:title="@string/menu_profile" />
+                <item
+                    android:id="@+id/nav_calendar"
+                    android:icon="@drawable/ic_baseline_calendar_today_24"
+                    android:title="@string/menu_calendar" />
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/ic_baseline_settings_24"
+                    android:title="@string/menu_settings" />
+            </menu>
+        </item>
+    </group>
+</menu>
