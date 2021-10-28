@@ -19,17 +19,12 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.eventified.ClubSearch;
 import com.example.eventified.MainActivity;
-import com.example.eventified.ui.login.SignUpActivity;
 import com.example.eventified.R;
-import com.example.eventified.ui.login.LoginViewModel;
-import com.example.eventified.ui.login.LoginViewModelFactory;
 import com.example.eventified.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -53,40 +48,34 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
 
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
-            @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
-                if (loginFormState == null) {
-                    return;
-                }
-                loginButton.setEnabled(loginFormState.isDataValid());
-                if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
-                }
-                if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
-                }
+        loginViewModel.getLoginFormState().observe(this, loginFormState -> {
+            if (loginFormState == null) {
+                return;
+            }
+            loginButton.setEnabled(loginFormState.isDataValid());
+            if (loginFormState.getUsernameError() != null) {
+                usernameEditText.setError(getString(loginFormState.getUsernameError()));
+            }
+            if (loginFormState.getPasswordError() != null) {
+                passwordEditText.setError(getString(loginFormState.getPasswordError()));
             }
         });
 
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
-
-                //Complete and destroy login activity once successful
-                finish();
+        loginViewModel.getLoginResult().observe(this, loginResult -> {
+            if (loginResult == null) {
+                return;
             }
+            loadingProgressBar.setVisibility(View.GONE);
+            if (loginResult.getError() != null) {
+                showLoginFailed(loginResult.getError());
+            }
+            if (loginResult.getSuccess() != null) {
+                updateUiWithUser(loginResult.getSuccess());
+            }
+            setResult(Activity.RESULT_OK);
+
+            //Complete and destroy login activity once successful
+            finish();
         });
 
         TextWatcher afterTextChangedListener = new TextWatcher() {
@@ -110,25 +99,18 @@ public class LoginActivity extends AppCompatActivity {
         };
         usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
+        passwordEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
+            return false;
+        });
+
+        loginButton.setOnClickListener(v -> {
+            loadingProgressBar.setVisibility(View.VISIBLE);
+            loginViewModel.login(usernameEditText.getText().toString(),
+                    passwordEditText.getText().toString());
         });
 
         configureSignUpButton();
@@ -149,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void configureSignUpButton()
     {
-        Button signUpButton = (Button) findViewById(R.id.signUpOption);
+        Button signUpButton = findViewById(R.id.signUpOption);
         signUpButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);

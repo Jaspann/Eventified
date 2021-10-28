@@ -17,10 +17,6 @@
             android:exported="false"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".ClubSearch"
-            android:exported="false"
-            android:label="Search"/>
-        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />

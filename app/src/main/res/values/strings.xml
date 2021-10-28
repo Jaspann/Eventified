@@ -56,5 +56,20 @@
     <string name="account_menu">Account</string>
     <string name="account_clubs">Clubs</string>
     <string name="club_search">Club Search</string>
+    <string name="title_set_reminder">Unset Title</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_home">Temporary Home Fragment Test</string>
+    <string name="hello_search">Temporary Search Fragment Test</string>
+    <string name="hello_club_list">Temporary Club List Fragment Test</string>
+    <string name="hello_club_view">Temporary Club View Fragment Test</string>
+    <string name="hello_profile">Temporary Profile Fragment Test</string>
+    <string name="hello_calendar">Temporary Calendar Fragment Test</string>
+    <string name="hello_settings">Temporary Settings Fragment Test</string>
+
 
 </resources>

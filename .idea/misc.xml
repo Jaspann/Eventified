@@ -11,13 +11,24 @@
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/activity_login.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/activity_main.xml" value="0.4095634095634096" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/activity_nav_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/activity_navigation.xml" value="0.25" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/activity_tollbar_plus_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/app_bar_nav_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/content_nav_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/content_tollbar_plus_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_calendar.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_club.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_club_list.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_search.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_second.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_settings.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/nav_drawer_full.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/nav_drawer_header.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/nav_header_nav_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/nav_toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/wipar/AndroidStudioProjects/Eventified/app/src/main/res/layout/settings_activity.xml" value="0.36666666666666664" />
