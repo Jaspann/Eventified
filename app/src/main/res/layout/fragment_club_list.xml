@@ -5,10 +5,28 @@
     android:layout_height="match_parent"
     tools:context=".ClubListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_club_list" />
+        android:paddingTop="10dp"
+        android:paddingHorizontal="10dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textAutoComplete"
+            android:autofillHints="name"
+            android:hint="@string/search_clubs"
+            android:drawableLeft="@drawable/ic_baseline_search_24"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
 
 </FrameLayout>
