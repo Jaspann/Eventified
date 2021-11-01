@@ -81,6 +81,7 @@
     <string name="placeholder_location">-----------Location-----------</string>
     <string name="example_description_2">According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway.</string>
     <string name="join">Join</string>
+    <string name="event_title">Event Title</string>
 
 
 </resources>
