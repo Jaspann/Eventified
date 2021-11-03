@@ -79,9 +79,10 @@
     <string name="placeholder_time">12:00 AM - 12:00 AM :</string>
     <string name="placeholder_short_event_description">Short Event Description</string>
     <string name="placeholder_location">-----------Location-----------</string>
-    <string name="example_description_2">According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway.</string>
+    <string name="example_description_2">A wasp is any insect of the narrow-waisted suborder Apocrita of the order Hymenoptera which is neither a bee nor an ant. The wasps do not constitute a clade.</string>
     <string name="join">Join</string>
     <string name="event_title">Event Title</string>
+    <string name="next_meeting">Next Meeting:</string>
 
 
 </resources>
