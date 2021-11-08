@@ -83,6 +83,9 @@
     <string name="join">Join</string>
     <string name="event_title">Event Title</string>
     <string name="next_meeting">Next Meeting:</string>
+    <string name="confirm_your_email">Confirm Your Email</string>
+    <string name="confirmation_code">Confirmation Code</string>
+    <string name="continue_button">Continue</string>
 
 
 </resources>
