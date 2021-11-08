@@ -15,6 +15,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.amplifyframework.auth.AuthUser;
+import com.amplifyframework.core.Amplify;
+import com.example.eventified.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -29,6 +32,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AuthUser currentUser = Amplify.Auth.getCurrentUser();
+
+        if(currentUser == null)
+        {
+            intent = new Intent(getApplicationContext(), LoginAmplify.class);
+        }
 
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -94,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SearchFragment()).commit();
+                        new ProfileFragment()).commit();
                 toolbar.setTitle("Profile");
                 break;
             case R.id.nav_calendar:
