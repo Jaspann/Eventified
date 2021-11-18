@@ -11,6 +11,12 @@ import android.widget.Toast;
 import com.amplifyframework.auth.AuthException;
 import com.amplifyframework.auth.result.AuthSignInResult;
 import com.amplifyframework.core.Amplify;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
 
 public class LoginAmplify extends AppCompatActivity {
 
@@ -21,22 +27,50 @@ public class LoginAmplify extends AppCompatActivity {
     }
 
     public void onPressSignIn(View view) {
+
+        final RequestQueue requestQueue = Volley.newRequestQueue(LoginAmplify.this);
+
+        String serverUrl = ""; //Input LoginAmplify URL Here
+
         EditText txtEmail = findViewById(R.id.username);
         EditText txtPassword = findViewById(R.id.password);
-        
-        Amplify.Auth.signIn(
-                txtEmail.getText().toString(),
-                txtPassword.getText().toString(),
-                this::onLoginSuccess,
-                this::onLoginError
-        );
+
+        serverUrl += "myUsername=" + txtEmail.getText() + "&myPassword=" + txtPassword.getText();
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, serverUrl, null,
+
+                response -> {
+                    try {
+                        boolean passwordEqual = response.getBoolean("passwordEqual");
+                        requestQueue.stop();
+                        if(passwordEqual)
+                        {
+                            this.onLoginSuccess();
+                        }
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), "Error: something with the request is wrong", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                        requestQueue.stop();
+                    }
+                },
+                error -> {
+                    Toast.makeText(getApplicationContext(), "Error: something with Volley is wrong", Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                    requestQueue.stop();
+                }) {
+        };
+        requestQueue.add(stringRequest);
     }
 
     private void onLoginError(AuthException e) {
         this.runOnUiThread(() -> Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show());
     }
 
-    private void onLoginSuccess(AuthSignInResult authSignInResult) {
+    private void onLoginSuccess() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

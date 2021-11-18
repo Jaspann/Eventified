@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.core.Amplify;
-import com.example.eventified.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{

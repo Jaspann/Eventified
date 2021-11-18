@@ -18,6 +18,12 @@ import com.amplifyframework.core.model.Model;
 import com.amplifyframework.datastore.DataStoreException;
 import com.amplifyframework.datastore.DataStoreItemChange;
 import com.amplifyframework.datastore.generated.model.User;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
 
 public class SignUpAmplify extends AppCompatActivity {
 
@@ -32,27 +38,49 @@ public class SignUpAmplify extends AppCompatActivity {
     }
 
     public void onPressCreate(View view) {
-        txtEmail = findViewById(R.id.username);
-        txtPassword = findViewById(R.id.password);
 
-        Amplify.Auth.signUp(
-                txtEmail.getText().toString(),
-                txtPassword.getText().toString(),
-                AuthSignUpOptions.builder().userAttribute(
-                        AuthUserAttributeKey.email(), txtEmail.getText().toString()
-                ).build(),
-                this::onJoinSuccess,
-                this::onJoinError
-        );
+        final RequestQueue requestQueue = Volley.newRequestQueue(SignUpAmplify.this);
+
+        String serverUrl = ""; //Input SignUpAmplify URL Here
+
+        EditText txtEmail = findViewById(R.id.username);
+        EditText txtPassword = findViewById(R.id.password);
+
+        serverUrl += "myUsername=" + txtEmail.getText() + "&myPassword=" + txtPassword.getText();
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PUT, serverUrl, null,
+
+                response -> {
+                    try {
+                        boolean relpy = response.getBoolean("response");
+                        requestQueue.stop();
+                        if(relpy)
+                        {
+                            this.onLoginSuccess();
+                        }
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Username already taken", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), "Error: something with the request is wrong", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                        requestQueue.stop();
+                    }
+                },
+                error -> {
+                    Toast.makeText(getApplicationContext(), "Error: something with Volley is wrong", Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                    requestQueue.stop();
+                }) {
+        };
+        requestQueue.add(stringRequest);
 
     }
 
-    private void onJoinSuccess(AuthSignUpResult authSignUpResult) {
-        Intent intent = new Intent(this, EmailConfirmationAmplify.class);
-        intent.putExtra("email", txtEmail.getText().toString());
-        intent.putExtra("password", txtPassword.getText().toString());
+    private void onLoginSuccess() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
     }
 
     private void onJoinError(AuthException e) {
