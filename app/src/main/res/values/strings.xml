@@ -86,6 +86,9 @@
     <string name="confirm_your_email">Confirm Your Email</string>
     <string name="confirmation_code">Confirmation Code</string>
     <string name="continue_button">Continue</string>
+    <string name="search">Search</string>
+    <string name="club_banner">Club Banner</string>
+    <string name="upcoming_events">Upcoming Events:</string>
 
 
 </resources>
