@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- I don't know why, but when android:name= is not set to ".AmplifyApp", the app does not work, and I do not have time to debug-->
     <application
         android:name=".AmplifyApp"
         android:allowBackup="true"
@@ -18,10 +19,10 @@
             android:name=".EmailConfirmationAmplify"
             android:exported="false" />
         <activity
-            android:name=".SignUpAmplify"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".LoginAmplify"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,19 +31,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.login.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="false"
             android:label="@string/title_activity_login"/>
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

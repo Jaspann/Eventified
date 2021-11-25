@@ -19,13 +19,10 @@ import org.json.JSONException;
 
 public class ClubListFragment extends Fragment {
 
-    TextView textView;
-    String serverUrl = "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/testemail";
 
     public ClubListFragment() {
         // Required empty public constructor
     }
-
 
     public static ClubListFragment newInstance() {
         ClubListFragment fragment = new ClubListFragment();
@@ -38,30 +35,6 @@ public class ClubListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        textView = textView.findViewById(R.id.volley_test);
-
-        final RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, serverUrl, null,
-
-                response -> {
-                    try {
-                        String email = response.getString("email");
-                        textView.setText(email);
-                        requestQueue.stop();
-                    } catch (JSONException e) {
-                        textView.setText("something with Request is wrong");
-                        e.printStackTrace();
-                        requestQueue.stop();
-                    }
-                },
-                error -> {
-                    textView.setText("something with Volley is wrong");
-                    error.printStackTrace();
-                    requestQueue.stop();
-                }) {
-        };
-        requestQueue.add(stringRequest);
 
     }
 

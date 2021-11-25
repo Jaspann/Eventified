@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".SignUp">
 
     <EditText
         android:id="@+id/username"
@@ -48,13 +48,14 @@
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="@string/action_create_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.2"
+        android:onClick="onPressCreate" />
 
     <Button
         android:id="@+id/logInOption"
@@ -64,7 +65,8 @@
         android:text="@string/log_in_instead"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUp" />
+        app:layout_constraintTop_toBottomOf="@+id/signUp"
+        android:onClick="onPressLogIn" />
 
     <ProgressBar
         android:id="@+id/loading"

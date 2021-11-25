@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.amplifyframework.auth.AuthException;
-import com.amplifyframework.auth.result.AuthSignInResult;
-import com.amplifyframework.core.Amplify;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -18,19 +16,19 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 
-public class LoginAmplify extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_amplify);
+        setContentView(R.layout.activity_login);
     }
 
     public void onPressSignIn(View view) {
 
-        final RequestQueue requestQueue = Volley.newRequestQueue(LoginAmplify.this);
+        final RequestQueue requestQueue = Volley.newRequestQueue(Login.this);
 
-        String serverUrl = ""; //Input LoginAmplify URL Here
+        String serverUrl = ""; //Inputs LoginLambda URL
 
         EditText txtEmail = findViewById(R.id.username);
         EditText txtPassword = findViewById(R.id.password);
@@ -76,7 +74,7 @@ public class LoginAmplify extends AppCompatActivity {
     }
 
     public void onPressCreate(View view) {
-        Intent intent = new Intent(this, SignUpAmplify.class);
+        Intent intent = new Intent(this, SignUp.class);
         startActivity(intent);
     }
 }

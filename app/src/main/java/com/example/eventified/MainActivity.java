@@ -11,9 +11,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.core.Amplify;
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(currentUser == null)
         {
-            intent = new Intent(getApplicationContext(), LoginAmplify.class);
+            intent = new Intent(getApplicationContext(), Login.class);
         }
 
         toolbar = findViewById(R.id.toolbar);
