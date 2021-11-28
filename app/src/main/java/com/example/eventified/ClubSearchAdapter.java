@@ -1,6 +1,7 @@
 package com.example.eventified;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -61,6 +63,17 @@ public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.Cl
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        holder.mainLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ClubActivity.class);
+
+            try {
+                intent.putExtra("name", name.getString(holder.getAdapterPosition()));
+                intent.putExtra("description", desc.getString(holder.getAdapterPosition()));
+                context.startActivity(intent);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
@@ -72,12 +85,14 @@ public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.Cl
 
         TextView nameDisplay, descDisplay;
         ImageView clubLogo;
+        ConstraintLayout mainLayout;
 
         public ClubViewHolder(@NonNull View itemView) {
             super(itemView);
             nameDisplay = itemView.findViewById(R.id.nameText);
             descDisplay = itemView.findViewById(R.id.descText);
             clubLogo = itemView.findViewById(R.id.clubLogo);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
 
         }
     }

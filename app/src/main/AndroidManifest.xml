@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- I don't know why, but when android:name= is not set to ".AmplifyApp", the app does not work, and I do not have time to debug-->
     <application
         android:name=".AmplifyApp"
         android:allowBackup="true"
@@ -15,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eventified"
         tools:replace="android:name">
+        <activity
+            android:name=".ClubActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="Club Details"/>
         <activity
             android:name=".EmailConfirmationAmplify"
             android:exported="false" />
@@ -33,7 +37,7 @@
         <activity
             android:name=".Login"
             android:exported="false"
-            android:label="@string/title_activity_login"/>
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
