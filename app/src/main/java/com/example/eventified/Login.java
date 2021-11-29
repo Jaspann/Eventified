@@ -3,6 +3,7 @@ package com.example.eventified;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,9 @@ import org.json.JSONException;
 
 public class Login extends AppCompatActivity {
 
+    EditText txtEmail;
+    EditText txtPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +34,8 @@ public class Login extends AppCompatActivity {
 
         String serverUrl = ""; //Inputs LoginLambda URL
 
-        EditText txtEmail = findViewById(R.id.username);
-        EditText txtPassword = findViewById(R.id.password);
+        txtEmail = findViewById(R.id.username);
+        txtPassword = findViewById(R.id.password);
 
         serverUrl += "myUsername=" + txtEmail.getText() + "&myPassword=" + txtPassword.getText();
 
@@ -69,6 +73,12 @@ public class Login extends AppCompatActivity {
     }
 
     private void onLoginSuccess() {
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("email", txtEmail.getText().toString());
+        editor.apply();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

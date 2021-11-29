@@ -3,6 +3,7 @@ package com.example.eventified;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,14 +25,15 @@ public class ClubActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     ImageView logo, banner;
-    TextView name, description;
+    TextView name, description, location;
     Toolbar toolbar;
 
-    String tempName, tempDesc;
+    String tempName, tempDesc, tempLocation;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club);
 
@@ -40,6 +42,7 @@ public class ClubActivity extends AppCompatActivity {
         name = findViewById(R.id.club_name);
         description = findViewById(R.id.club_description);
         toolbar = findViewById(R.id.toolbar);
+        location = findViewById(R.id.club_location);
 
 
         setSupportActionBar(toolbar);
@@ -48,22 +51,17 @@ public class ClubActivity extends AppCompatActivity {
         getData();
         setData();
 
-        fetchClubInfo("CAPE");
-
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+        fetchClubInfo(tempName);
 
     }
 
     private void getData(){
 
-        if(getIntent().hasExtra("name") && getIntent().hasExtra("description")){
+        if(getIntent().hasExtra("name") && getIntent().hasExtra("description")&& getIntent().hasExtra("location")){
 
             tempName = getIntent().getStringExtra("name");
             tempDesc = getIntent().getStringExtra("description");
+            tempLocation = getIntent().getStringExtra("location");
 
         }else{
             Toast.makeText(this,"No Data", Toast.LENGTH_SHORT).show();
@@ -74,6 +72,7 @@ public class ClubActivity extends AppCompatActivity {
         name.setText(tempName);
         toolbar.setTitle(tempName);
         description.setText(tempDesc);
+        location.setText(tempLocation);
 
 
         String logoUrl = "https://eventifiedbucketone.s3.amazonaws.com/logos/"+
@@ -90,7 +89,8 @@ public class ClubActivity extends AppCompatActivity {
 
     public void fetchClubInfo(String query)
     {
-        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         String serverUrl = ""; //Inputs getClubInfo URL
 
@@ -111,7 +111,7 @@ public class ClubActivity extends AppCompatActivity {
                         requestQueue.stop();
 
                         ClubPageAdapter adapter = new ClubPageAdapter(this,
-                                titles, descriptions, locations, dates, times, repeating, query);
+                                titles, descriptions, locations, dates, times, repeating, query, tempLocation);
 
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(this));

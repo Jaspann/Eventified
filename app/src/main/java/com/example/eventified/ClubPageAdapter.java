@@ -2,12 +2,14 @@ package com.example.eventified;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -28,13 +34,13 @@ import java.net.URL;
 
 public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventViewHolder> {
 
-    String name;
+    String name, defaultLocation;
     JSONArray title, desc, location, date, time, repeating;
     Context context;
 
     public ClubPageAdapter(Context context, JSONArray title, JSONArray desc,
                            JSONArray location, JSONArray date, JSONArray time,
-                           JSONArray repeating, String name)
+                           JSONArray repeating, String name, String defaultLocation)
     {
         this.context = context;
         this.title = title;
@@ -44,6 +50,7 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
         this.time = time;
         this.repeating = repeating;
         this.name = name;
+        this.defaultLocation = defaultLocation;
     }
 
     @NonNull
@@ -62,7 +69,11 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
             holder.descDisplay.setText(desc.getString(position));
             holder.dateDisplay.setText(date.getString(position));
             holder.timeDisplay.setText(time.getString(position));
-            holder.locationDisplay.setText(location.getString(position));
+            if(location.getString(position).equals("null")) {
+                holder.locationDisplay.setText(location.getString(position));
+            }else{
+                holder.locationDisplay.setText(defaultLocation);
+            }
 
             String imageUrl = "https://eventifiedbucketone.s3.amazonaws.com/logos/"+
                     name.replace(' ', '+')+".png";
@@ -73,6 +84,47 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        holder.button.setOnClickListener(v -> {
+
+
+            final RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+            SharedPreferences sharedPreferences = context.getSharedPreferences("sharedPrefs", context.MODE_PRIVATE);
+            String email = sharedPreferences.getString("email", "");
+
+            String serverUrl = ""; //Inputs putClubEventRegister URL
+
+            serverUrl += "email=" + email + "&title=" + holder.titleDisplay.getText().toString();
+
+            JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PUT, serverUrl, null,
+
+                    response -> {
+                        try {
+                            boolean added = response.getBoolean("added");
+                            requestQueue.stop();
+                            if(added)
+                            {
+                                Toast.makeText(context, "You have been added to the event", Toast.LENGTH_LONG).show();
+                            }
+                            if(!added)
+                            {
+                                Toast.makeText(context, "You have been removed from the event", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            Toast.makeText(context, "Error: something with the request is wrong", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                            requestQueue.stop();
+                        }
+                    },
+                    error -> {
+                        Toast.makeText(context, "Error: something with Volley is wrong", Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
+                        requestQueue.stop();
+                    }) {
+            };
+            requestQueue.add(stringRequest);
+        });
+
     }
 
     @Override
@@ -84,6 +136,7 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
 
         TextView nameDisplay, descDisplay, titleDisplay, locationDisplay, dateDisplay, timeDisplay;
         ImageView clubLogo;
+        Button button;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -94,6 +147,8 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
             locationDisplay = itemView.findViewById(R.id.cLocation);
             dateDisplay = itemView.findViewById(R.id.cDate);
             timeDisplay = itemView.findViewById(R.id.cTime);
+            button = itemView.findViewById(R.id.register_button);
+
 
         }
     }

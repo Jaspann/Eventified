@@ -27,14 +27,15 @@ import java.net.URL;
 
 public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.ClubViewHolder> {
 
-    JSONArray name, desc;
+    JSONArray name, desc, location;
     Context context;
 
-    public ClubSearchAdapter(Context ct, JSONArray nm, JSONArray ds)
+    public ClubSearchAdapter(Context ct, JSONArray nm, JSONArray ds, JSONArray loc)
     {
         context = ct;
         name = nm;
         desc = ds;
+        location = loc;
     }
 
     @NonNull
@@ -50,6 +51,7 @@ public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.Cl
         try {
             holder.nameDisplay.setText(name.getString(position));
             holder.descDisplay.setText(desc.getString(position));
+            holder.location = location.getString(position);
 
             String imageUrl = "https://eventifiedbucketone.s3.amazonaws.com/logos/"+
                     name.getString(position).replace(' ', '+')+".png";
@@ -65,6 +67,7 @@ public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.Cl
             try {
                 intent.putExtra("name", name.getString(holder.getAdapterPosition()));
                 intent.putExtra("description", desc.getString(holder.getAdapterPosition()));
+                intent.putExtra("location", location.getString(holder.getAdapterPosition()));
                 context.startActivity(intent);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -82,6 +85,7 @@ public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.Cl
         TextView nameDisplay, descDisplay;
         ImageView clubLogo;
         ConstraintLayout mainLayout;
+        String location;
 
         public ClubViewHolder(@NonNull View itemView) {
             super(itemView);

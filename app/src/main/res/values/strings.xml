@@ -71,7 +71,7 @@
     <string name="hello_calendar">Temporary Calendar Fragment Test</string>
     <string name="hello_settings">Temporary Settings Fragment Test</string>
     <string name="search_clubs">Search Clubs</string>
-    <string name="example_description">Bees are insects with wings closely related to wasps and ants, known for their role in pollination and, in the case of the best-known bee species, the western honey bee, for producing honey.</string>
+    <string name="example_description">Bees are insects with wings closely related to wasps and ants, known for their role in pollination and, in the case of the best-known bee species, the</string>
     <string name="time_placeholder">-------------Time------------</string>
     <string name="date_placeholder">-------------Date-------------</string>
     <string name="club_logo_description">CLub Logo</string>
@@ -89,6 +89,7 @@
     <string name="search">Search</string>
     <string name="club_banner">Club Banner</string>
     <string name="upcoming_events">Upcoming Events:</string>
+    <string name="register">Register</string>
 
 
 </resources>

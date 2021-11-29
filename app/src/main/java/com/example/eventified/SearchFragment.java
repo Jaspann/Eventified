@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
+        Log.i("Location: ","Start of Fetch Club Info");
         super.onCreate(savedInstanceState);
     }
 
@@ -84,9 +86,10 @@ public class SearchFragment extends Fragment {
                     try {
                         JSONArray names = response.getJSONArray("name");
                         JSONArray descriptions = response.getJSONArray("desc");
+                        JSONArray locations = response.getJSONArray("location");
                         requestQueue.stop();
 
-                        ClubSearchAdapter adapter = new ClubSearchAdapter(getContext(), names, descriptions);
+                        ClubSearchAdapter adapter = new ClubSearchAdapter(getContext(), names, descriptions, locations);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
