@@ -43,7 +43,6 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        Log.i("Location: ","Start of Fetch Club Info");
         super.onCreate(savedInstanceState);
     }
 

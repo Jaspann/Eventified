@@ -90,6 +90,9 @@
     <string name="club_banner">Club Banner</string>
     <string name="upcoming_events">Upcoming Events:</string>
     <string name="register">Register</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_club">Create Club</string>
 
 
 </resources>

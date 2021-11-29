@@ -29,13 +29,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AuthUser currentUser = Amplify.Auth.getCurrentUser();
-
-        if(currentUser == null)
-        {
-            intent = new Intent(getApplicationContext(), Login.class);
-        }
-
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         toolbar.setTitle("Home");
@@ -90,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_eboard:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ClubListFragment()).commit();
+                        new BoardClubListFragment()).commit();
                 toolbar.setTitle("Your Clubs");
                 break;
             case R.id.nav_member:

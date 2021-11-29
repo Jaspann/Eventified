@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ClubListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/volley_test"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_club_list" />
+        android:paddingTop="10dp"
+        android:paddingHorizontal="10dp"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/student_club_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
+    </LinearLayout>
 
 </FrameLayout>

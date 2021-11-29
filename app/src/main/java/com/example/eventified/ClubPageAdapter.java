@@ -69,7 +69,7 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
             holder.descDisplay.setText(desc.getString(position));
             holder.dateDisplay.setText(date.getString(position));
             holder.timeDisplay.setText(time.getString(position));
-            if(location.getString(position).equals("null")) {
+            if(location.getString(position) != "null") {
                 holder.locationDisplay.setText(location.getString(position));
             }else{
                 holder.locationDisplay.setText(defaultLocation);

@@ -2,8 +2,10 @@ package com.example.eventified;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,5 +131,46 @@ public class ClubActivity extends AppCompatActivity {
                 }) {
         };
         requestQueue.add(stringRequest);
+    }
+
+    public void onPressJoin(View view) {
+
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        String email = sharedPreferences.getString("email", "");
+
+        String serverUrl = ""; //Inputs putClubEventRegister URL
+
+        serverUrl += "email=" + email + "&clubName=" + name.getText().toString();
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PUT, serverUrl, null,
+
+                response -> {
+                    try {
+                        boolean added = response.getBoolean("added");
+                        requestQueue.stop();
+                        if(added)
+                        {
+                            Toast.makeText(this, "You have joined the club!", Toast.LENGTH_LONG).show();
+                        }
+                        if(!added)
+                        {
+                            Toast.makeText(this, "You have left the club.", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        Toast.makeText(this, "Error: something with the request is wrong", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                        requestQueue.stop();
+                    }
+                },
+                error -> {
+                    Toast.makeText(this, "Error: something with Volley is wrong", Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                    requestQueue.stop();
+                }) {
+        };
+        requestQueue.add(stringRequest);
+
     }
 }

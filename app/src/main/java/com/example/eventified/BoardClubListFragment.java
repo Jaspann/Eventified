@@ -28,16 +28,16 @@ import org.json.JSONException;
 
 import java.util.Objects;
 
-public class ClubListFragment extends Fragment {
+public class BoardClubListFragment extends Fragment {
 
     RecyclerView recyclerView;
 
-    public ClubListFragment() {
+    public BoardClubListFragment() {
         // Required empty public constructor
     }
 
-    public static ClubListFragment newInstance() {
-        ClubListFragment fragment = new ClubListFragment();
+    public static BoardClubListFragment newInstance() {
+        BoardClubListFragment fragment = new BoardClubListFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -54,8 +54,8 @@ public class ClubListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_club_list, container, false);
-        recyclerView = view.findViewById(R.id.student_club_recycler);
+        View view = inflater.inflate(R.layout.fragment_board_club_list, container, false);
+        recyclerView = view.findViewById(R.id.board_clubs_recycler);
 
         // Inflate the layout for this fragment
         return view;
@@ -74,9 +74,11 @@ public class ClubListFragment extends Fragment {
     {
         final RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
 
-        String serverUrl = ""; //Inputs clubStudentList URL
+        String serverUrl = ""; //Inputs getBoardList URL
 
         serverUrl += "searchQuery=" + query;
+
+        //recyclerView = requireView().findViewById(R.id.clubs_recycler2);
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, serverUrl, null,
 
