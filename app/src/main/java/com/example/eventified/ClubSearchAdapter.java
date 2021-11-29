@@ -56,10 +56,6 @@ public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.Cl
 
             Picasso.get().load(imageUrl).into(holder.clubLogo);
 
-            //Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
-            //InputStream is = (InputStream) new URL(imageUrl).getContent();
-            //holder.clubLogo.setImageBitmap(bitmap);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

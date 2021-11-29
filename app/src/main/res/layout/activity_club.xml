@@ -43,12 +43,11 @@ tools:context=".ClubActivity">
             android:id="@+id/club_name"
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:text="@string/club_name_placeholder"
             android:textAlignment="center"
-            android:textColor="#000000"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@+id/bannerImageView" />
 
@@ -58,7 +57,6 @@ tools:context=".ClubActivity">
             android:layout_height="20dp"
             android:text="@string/date_placeholder"
             android:textAlignment="center"
-            android:textColor="#000000"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/next_meeting_text"
             app:layout_constraintTop_toBottomOf="@+id/next_meeting_text" />
@@ -67,14 +65,14 @@ tools:context=".ClubActivity">
             android:id="@+id/next_meeting_text"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="28dp"
             android:layout_marginTop="10dp"
             android:text="@string/next_meeting"
             android:textAlignment="center"
-            android:textColor="#000000"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/cardView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bannerImageView" />
+
 
         <TextView
             android:id="@+id/next_meeting_time"
@@ -82,11 +80,11 @@ tools:context=".ClubActivity">
             android:layout_height="20dp"
             android:text="@string/time_placeholder"
             android:textAlignment="center"
-            android:textColor="#000000"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/join_club_button"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/next_meeting_date"
             app:layout_constraintTop_toBottomOf="@+id/next_meeting_date" />
-
 
         <ImageView
             android:id="@+id/bannerImageView"
@@ -173,28 +171,13 @@ tools:context=".ClubActivity">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/club_desc_cardView" />
 
-        <include
-            android:id="@+id/club_card_temp"
-            layout="@layout/club_card"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/events_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Upcoming_events_text" />
-
-        <TextView
-            android:id="@+id/next_meeting_location"
-            android:layout_width="127dp"
-            android:layout_height="32dp"
-            android:text="@string/placeholder_location"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/club_name"
-            app:layout_constraintStart_toStartOf="@+id/club_name"
-            app:layout_constraintTop_toBottomOf="@+id/club_name" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

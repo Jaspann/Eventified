@@ -7,10 +7,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class ClubActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
 
     ImageView logo, banner;
     TextView name, description;
@@ -32,11 +43,18 @@ public class ClubActivity extends AppCompatActivity {
 
 
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getData();
         setData();
+
+        fetchClubInfo("CAPE");
+
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
 
     }
 
@@ -68,7 +86,48 @@ public class ClubActivity extends AppCompatActivity {
 
         Picasso.get().load(bannerUrl).into(banner);
 
+    }
 
+    public void fetchClubInfo(String query)
+    {
+        final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
+        String serverUrl = ""; //Inputs getClubInfo URL
+
+        serverUrl += "clubName=" + query;
+
+        recyclerView = findViewById(R.id.events_recycler);
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, serverUrl, null,
+
+                response -> {
+                    try {
+                        JSONArray titles = response.getJSONArray("title");
+                        JSONArray descriptions = response.getJSONArray("desc");
+                        JSONArray locations = response.getJSONArray("location");
+                        JSONArray dates = response.getJSONArray("date");
+                        JSONArray times = response.getJSONArray("time");
+                        JSONArray repeating = response.getJSONArray("repeating");
+                        requestQueue.stop();
+
+                        ClubPageAdapter adapter = new ClubPageAdapter(this,
+                                titles, descriptions, locations, dates, times, repeating, query);
+
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+                    } catch (JSONException e) {
+                        Toast.makeText(this, "Error: something with the request is wrong", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                        requestQueue.stop();
+                    }
+                },
+                error -> {
+                    Toast.makeText(this, "Error: something with Volley is wrong", Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                    requestQueue.stop();
+                }) {
+        };
+        requestQueue.add(stringRequest);
     }
 }
