@@ -67,8 +67,22 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
             holder.nameDisplay.setText(name);
             holder.titleDisplay.setText(title.getString(position));
             holder.descDisplay.setText(desc.getString(position));
-            holder.dateDisplay.setText(date.getString(position));
-            holder.timeDisplay.setText(time.getString(position));
+            holder.dateDisplay.setText(date.getString(position).substring(5).replace('-', '/'));
+
+            String disTime = time.getString(position).substring(0, time.getString(position).length() - 3);
+            if(Integer.parseInt(disTime.substring(0, 2)) > 12)
+            {
+                disTime = Integer.parseInt(disTime.substring(0, 2)) - 12 + disTime.substring(2);
+                disTime += " PM";
+            }
+            else
+            {
+                disTime += " AM";
+            }
+            disTime = disTime.charAt(0) == '0' ? disTime.substring(1) : disTime;
+            holder.timeDisplay.setText(disTime);
+
+
             if(location.getString(position) != "null") {
                 holder.locationDisplay.setText(location.getString(position));
             }else{
@@ -89,10 +103,10 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
 
             final RequestQueue requestQueue = Volley.newRequestQueue(context);
 
-            SharedPreferences sharedPreferences = context.getSharedPreferences("sharedPrefs", context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
             String email = sharedPreferences.getString("email", "");
 
-            String serverUrl = ""; //Inputs putClubEventRegister URL
+            String serverUrl = sharedPreferences.getString("putClubEventRegister", "");
 
             serverUrl += "email=" + email + "&title=" + holder.titleDisplay.getText().toString();
 

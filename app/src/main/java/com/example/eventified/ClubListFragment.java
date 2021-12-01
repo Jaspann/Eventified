@@ -1,5 +1,6 @@
 package com.example.eventified;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -65,7 +66,8 @@ public class ClubListFragment extends Fragment {
     @MainThread
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
     {
-        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("sharedPrefs", getContext().MODE_PRIVATE);
+        getContext();
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
         String email = sharedPreferences.getString("email", "");
         fetchClubs(email);
     }
@@ -74,7 +76,9 @@ public class ClubListFragment extends Fragment {
     {
         final RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
 
-        String serverUrl = ""; //Inputs clubStudentList URL
+        getContext();
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+        String serverUrl = sharedPreferences.getString("memberClubList", "");
 
         serverUrl += "searchQuery=" + query;
 

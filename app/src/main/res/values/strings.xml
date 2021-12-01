@@ -26,7 +26,7 @@
     <!-- Main Activity -->
     <string name="home_button_description">Home</string>
     <string name="search_button_description">Search</string>
-    <string name="title_activity_login">Home</string>
+    <string name="title_activity_login">Eventified</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
@@ -72,8 +72,8 @@
     <string name="hello_settings">Temporary Settings Fragment Test</string>
     <string name="search_clubs">Search Clubs</string>
     <string name="example_description">Bees are insects with wings closely related to wasps and ants, known for their role in pollination and, in the case of the best-known bee species, the</string>
-    <string name="time_placeholder">-------------Time------------</string>
-    <string name="date_placeholder">-------------Date-------------</string>
+    <string name="time_placeholder">Time AM</string>
+    <string name="date_placeholder">DA/TE</string>
     <string name="club_logo_description">CLub Logo</string>
     <string name="club_name_placeholder">Club Name</string>
     <string name="placeholder_time">12:00 AM - 12:00 AM :</string>

@@ -1,5 +1,7 @@
 package com.example.eventified;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.MainThread;
@@ -23,6 +25,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import java.util.Objects;
 
 public class SearchFragment extends Fragment {
 
@@ -71,13 +75,15 @@ public class SearchFragment extends Fragment {
 
     public void fetchClubs(String query)
     {
-        final RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        final RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
 
-        String serverUrl = ""; //Inputs GetClubSearch URL
+        getContext();
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+        String serverUrl = sharedPreferences.getString("getClubSearch", "");
 
         serverUrl += "searchQuery=" + query;
 
-        recyclerView = getView().findViewById(R.id.clubs_recycler);
+        recyclerView = requireView().findViewById(R.id.clubs_recycler);
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, serverUrl, null,
 

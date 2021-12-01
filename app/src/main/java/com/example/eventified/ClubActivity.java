@@ -22,12 +22,14 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.Objects;
+
 public class ClubActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
     ImageView logo, banner;
-    TextView name, description, location;
+    TextView name, description, location, nextDate, nextTime;
     Toolbar toolbar;
 
     String tempName, tempDesc, tempLocation;
@@ -48,7 +50,7 @@ public class ClubActivity extends AppCompatActivity {
 
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         getData();
         setData();
@@ -94,11 +96,14 @@ public class ClubActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        String serverUrl = ""; //Inputs getClubInfo URL
+        SharedPreferences sharedPreferences = this.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        String serverUrl = sharedPreferences.getString("getClubInfo", "");
 
         serverUrl += "clubName=" + query;
 
         recyclerView = findViewById(R.id.events_recycler);
+        nextDate = findViewById(R.id.next_meeting_date);
+        nextTime = findViewById(R.id.next_meeting_time);
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, serverUrl, null,
 
@@ -118,8 +123,23 @@ public class ClubActivity extends AppCompatActivity {
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+                        nextDate.setText(dates.getString(0).substring(5).replace('-', '/'));
+
+                        String disTime = times.getString(0).substring(0, times.getString(0).length() - 3);
+                        if(Integer.parseInt(disTime.substring(0, 2)) > 12)
+                        {
+                            disTime = Integer.parseInt(disTime.substring(0, 2)) - 12 + disTime.substring(2);
+                            disTime += " PM";
+                        }
+                        else
+                        {
+                            disTime += " AM";
+                        }
+
+                        nextTime.setText(disTime);
+
                     } catch (JSONException e) {
-                        Toast.makeText(this, "Error: something with the request is wrong", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Something with the request is wrong, or there are no events for this club", Toast.LENGTH_LONG).show();
                         e.printStackTrace();
                         requestQueue.stop();
                     }
@@ -140,7 +160,7 @@ public class ClubActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
         String email = sharedPreferences.getString("email", "");
 
-        String serverUrl = ""; //Inputs putClubEventRegister URL
+        String serverUrl = sharedPreferences.getString("putStudentClub", "");
 
         serverUrl += "email=" + email + "&clubName=" + name.getText().toString();
 
