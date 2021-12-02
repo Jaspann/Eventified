@@ -25,7 +25,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.ClubViewHolder> {
+public class    ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.ClubViewHolder> {
 
     JSONArray name, desc, location;
     Context context;
@@ -49,6 +49,7 @@ public class ClubSearchAdapter extends RecyclerView.Adapter<ClubSearchAdapter.Cl
     @Override
     public void onBindViewHolder(@NonNull ClubViewHolder holder, int position) {
         try {
+
             holder.nameDisplay.setText(name.getString(position));
             holder.descDisplay.setText(desc.getString(position));
             holder.location = location.getString(position);

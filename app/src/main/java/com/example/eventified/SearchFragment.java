@@ -8,6 +8,7 @@ import androidx.annotation.MainThread;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ import java.util.Objects;
 public class SearchFragment extends Fragment {
 
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -62,6 +64,20 @@ public class SearchFragment extends Fragment {
             fetchClubs(query.getText().toString());
         });
 
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        EditText query = view.findViewById(R.id.club_search_bar);
+                        fetchClubs(query.getText().toString());
+
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }
+        );
+
 
         return view;
     }
@@ -75,6 +91,7 @@ public class SearchFragment extends Fragment {
 
     public void fetchClubs(String query)
     {
+
         final RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
 
         getContext();
@@ -112,4 +129,5 @@ public class SearchFragment extends Fragment {
         };
         requestQueue.add(stringRequest);
     }
+
 }

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ import java.util.Objects;
 public class ClubListFragment extends Fragment {
 
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public ClubListFragment() {
         // Required empty public constructor
@@ -58,7 +60,20 @@ public class ClubListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_club_list, container, false);
         recyclerView = view.findViewById(R.id.student_club_recycler);
 
-        // Inflate the layout for this fragment
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setOnRefreshListener(
+                () -> {
+
+                    SharedPreferences sharedPreferences = requireContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+                    String email = sharedPreferences.getString("email", "");
+                    Log.i("tests", "Refreshing Page");
+                    fetchClubs(email);
+
+                    recyclerView.removeAllViewsInLayout();
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+        );
+
         return view;
     }
 
@@ -90,10 +105,11 @@ public class ClubListFragment extends Fragment {
                         JSONArray descriptions = response.getJSONArray("desc");
                         JSONArray locations = response.getJSONArray("location");
                         requestQueue.stop();
+                        Log.i("test", "Made it to the try");
 
                         ClubSearchAdapter adapter = new ClubSearchAdapter(getContext(), names, descriptions, locations);
-                        recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView.setAdapter(adapter);
 
                     } catch (JSONException e) {
                         Toast.makeText(getContext(), "Error: something with the request is wrong", Toast.LENGTH_LONG).show();
