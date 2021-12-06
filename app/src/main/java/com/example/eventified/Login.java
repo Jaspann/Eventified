@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
 
         final RequestQueue requestQueue = Volley.newRequestQueue(Login.this);
 
-        String serverUrl = ""; //Inputs LoginLambda URL
+        String serverUrl = "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/loginlambda?"; //Inputs LoginLambda URL
 
         txtEmail = findViewById(R.id.username);
         txtPassword = findViewById(R.id.password);

@@ -33,7 +33,7 @@ public class SignUp extends AppCompatActivity {
 
         final RequestQueue requestQueue = Volley.newRequestQueue(SignUp.this);
 
-        String serverUrl = ""; //Inputs SignUpLambda URL
+        String serverUrl = "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/signuplambda?"; //Inputs SignUpLambda URL
 
         EditText txtEmail = findViewById(R.id.username);
         EditText txtPassword = findViewById(R.id.password);
