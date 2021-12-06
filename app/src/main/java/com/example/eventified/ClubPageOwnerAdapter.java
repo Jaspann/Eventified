@@ -93,6 +93,12 @@ public class ClubPageOwnerAdapter extends RecyclerView.Adapter<ClubPageOwnerAdap
 
             Intent intent = new Intent(context, ViewEventActivity.class);
             intent.putExtra("title", holder.titleDisplay.getText());
+            intent.putExtra("name", holder.nameDisplay.getText());
+            intent.putExtra("location", holder.locationDisplay.getText());
+            intent.putExtra("desc", holder.descDisplay.getText());
+            intent.putExtra("time", holder.timeDisplay.getText());
+            intent.putExtra("date", holder.dateDisplay.getText());
+
             context.startActivity(intent);
         });
 

@@ -54,7 +54,6 @@ public class ClubOwnerActivity extends AppCompatActivity {
         setData();
 
         fetchClubInfo(tempName);
-
     }
 
     private void getData(){

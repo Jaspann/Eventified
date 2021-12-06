@@ -15,9 +15,6 @@
         android:theme="@style/Theme.Eventified"
         tools:replace="android:name">
         <activity
-            android:name=".ViewEventActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddClubEvent"
             android:exported="false" />
         <activity
@@ -25,12 +22,16 @@
             android:exported="false"
             android:label="Club Details"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".ClubOwnerActivity"
             android:exported="false"
             android:label="Club Details"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ViewEventActivity"
+            android:exported="false"
+            android:label="Event Details"
+            android:parentActivityName=".ClubOwnerActivity" />
         <activity
             android:name=".EmailConfirmationAmplify"
             android:exported="false" />

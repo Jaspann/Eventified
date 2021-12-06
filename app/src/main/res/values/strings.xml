@@ -96,6 +96,8 @@
     <string name="save">Save</string>
     <string name="add_event">Add Event</string>
     <string name="view">View</string>
+    <string name="delete_event">Delete Event</string>
+    <string name="registered">Registered:</string>
 
 
 </resources>
