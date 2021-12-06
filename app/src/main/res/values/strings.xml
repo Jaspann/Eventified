@@ -94,6 +94,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_club">Create Club</string>
     <string name="save">Save</string>
+    <string name="add_event">Add Event</string>
+    <string name="view">View</string>
 
 
 </resources>

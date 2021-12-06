@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //addUrls();
+        addUrls();
 
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -112,5 +112,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void addUrls(){
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("LoginLambda", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/loginlambda?");
+        editor.putString("SignUpLambda", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/signuplambda?");
+        editor.putString("getClubSearch", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/getclubsearch?");
+        editor.putString("getClubInfo", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/getclubinfo?");
+        editor.putString("putClubEventRegister", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/putclubeventregister?");
+        editor.putString("putStudentClub", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/putstudentclub?");
+        editor.putString("memberClubList", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/memberclublist?");
+        editor.putString("getClubOwner", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/getclubowner?");
+        editor.putString("getHomeEvents", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/gethomeevents?");
+
+        editor.apply();
     }
 }

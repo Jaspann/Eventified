@@ -29,17 +29,6 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="@string/title_set_reminder" />
 
-            <Button
-                android:id="@+id/join_club_button"
-                android:layout_width="80dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/save"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                android:onClick="onPressSave"/>
-
             <TextView
                 android:id="@+id/club_name"
                 android:layout_width="150dp"
@@ -82,8 +71,6 @@
                 android:text="@string/time_placeholder"
                 android:textAlignment="center"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@+id/join_club_button"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/next_meeting_date"
                 app:layout_constraintTop_toBottomOf="@+id/next_meeting_date" />
 
@@ -145,11 +132,12 @@
                 android:id="@+id/club_desc_cardView"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="54dp"
                 app:cardBackgroundColor="#ffB6C7E0"
                 app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/join_club_button">
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -190,6 +178,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Upcoming_events_text" />
+
+            <Button
+                android:id="@+id/add_new_event"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:onClick="onAddEvent"
+                android:text="@string/add_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/events_recycler" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

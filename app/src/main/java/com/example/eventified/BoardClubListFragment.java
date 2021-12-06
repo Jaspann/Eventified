@@ -91,7 +91,7 @@ public class BoardClubListFragment extends Fragment {
                         JSONArray locations = response.getJSONArray("location");
                         requestQueue.stop();
 
-                        ClubSearchAdapter adapter = new ClubSearchAdapter(getContext(), names, descriptions, locations);
+                        ClubSearchOwnerAdapter adapter = new ClubSearchOwnerAdapter(getContext(), names, descriptions, locations);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
