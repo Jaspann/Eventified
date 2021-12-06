@@ -60,7 +60,7 @@
                 android:id="@+id/cDate"
                 android:layout_width="60dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/date_placeholder"
                 android:textAlignment="center"
@@ -106,7 +106,7 @@
 
             <TextView
                 android:id="@+id/cClubName"
-                android:layout_width="191dp"
+                android:layout_width="180dp"
                 android:layout_height="32dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
@@ -121,12 +121,13 @@
 
             <TextView
                 android:id="@+id/cTitle"
-                android:layout_width="191dp"
-                android:layout_height="32dp"
+                android:layout_width="180dp"
+                android:layout_height="33dp"
                 android:text="@string/event_title"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/cClubName"
                 app:layout_constraintStart_toStartOf="@+id/cClubName"
                 app:layout_constraintTop_toBottomOf="@+id/cClubName" />
 

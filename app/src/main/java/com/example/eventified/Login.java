@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
 
         txtEmail = findViewById(R.id.username);
         txtPassword = findViewById(R.id.password);
+        //TODO: Should hash passwords before they are sent, not done as not expected to be used outside of testing at this time
 
         serverUrl += "myUsername=" + txtEmail.getText() + "&myPassword=" + txtPassword.getText();
 

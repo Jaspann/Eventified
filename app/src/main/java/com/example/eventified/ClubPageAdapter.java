@@ -163,7 +163,6 @@ public class ClubPageAdapter extends RecyclerView.Adapter<ClubPageAdapter.EventV
             timeDisplay = itemView.findViewById(R.id.cTime);
             button = itemView.findViewById(R.id.register_button);
 
-
         }
     }
 
