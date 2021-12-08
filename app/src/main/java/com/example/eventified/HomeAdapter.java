@@ -117,6 +117,10 @@ public class HomeAdapter extends RecyclerView.Adapter {
                         name.getString(position).replace(' ', '+')+".png";
 
                 Picasso.get().load(imageUrl).into(((ClubEventViewHolder)holder).clubLogo);
+
+
+                ((ClubEventViewHolder)holder).button.setVisibility(View.GONE);
+                ((ClubEventViewHolder)holder).actionText.setVisibility(View.GONE);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -131,7 +135,8 @@ public class HomeAdapter extends RecyclerView.Adapter {
     class ClubEventViewHolder
             extends RecyclerView.ViewHolder {
 
-        TextView nameDisplay, descDisplay, titleDisplay, locationDisplay, dateDisplay, timeDisplay;
+        TextView nameDisplay, descDisplay, titleDisplay,
+                locationDisplay, dateDisplay, timeDisplay, actionText;
         ImageView clubLogo;
         Button button;
 
@@ -145,6 +150,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
             dateDisplay = itemView.findViewById(R.id.cDate);
             timeDisplay = itemView.findViewById(R.id.cTime);
             button = itemView.findViewById(R.id.register_button);
+            actionText = itemView.findViewById(R.id.action_button_text);
 
         }
     }

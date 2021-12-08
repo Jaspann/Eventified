@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -154,6 +155,10 @@ public class ClubOwnerActivity extends AppCompatActivity {
 
     public void onAddEvent(View view) {
 
+        Intent intent = new Intent(this, AddClubEvent.class);
+        intent.putExtra("name", name.getText());
+
+        this.startActivity(intent);
 
     }
 }

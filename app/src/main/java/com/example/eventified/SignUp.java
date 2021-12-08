@@ -45,9 +45,9 @@ public class SignUp extends AppCompatActivity {
 
                 response -> {
                     try {
-                        boolean relpy = response.getBoolean("response");
+                        boolean reply = response.getBoolean("response");
                         requestQueue.stop();
-                        if(relpy)
+                        if(reply)
                         {
                             this.onLoginSuccess();
                         }

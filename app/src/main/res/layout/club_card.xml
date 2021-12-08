@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/cMainLayout"
@@ -19,7 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp">
+            android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
@@ -83,7 +82,8 @@
             <TextView
                 android:id="@+id/cLocation"
                 android:layout_width="120dp"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
                 android:text="@string/placeholder_location"
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -94,20 +94,23 @@
             <TextView
                 android:id="@+id/cDescription"
                 android:layout_width="271dp"
-                android:layout_height="41dp"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
                 android:layout_marginStart="8dp"
 
+                android:layout_marginBottom="4dp"
                 android:text="@string/example_description"
                 android:textColor="#000000"
-                android:textSize="10sp"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardView2"
-                app:layout_constraintTop_toBottomOf="@+id/cTitle"
-                tools:ignore="SmallSp" />
+                app:layout_constraintTop_toBottomOf="@+id/cTitle" />
 
             <TextView
                 android:id="@+id/cClubName"
-                android:layout_width="180dp"
-                android:layout_height="32dp"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:minHeight="32dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:text="@string/club_name_placeholder"
@@ -121,8 +124,9 @@
 
             <TextView
                 android:id="@+id/cTitle"
-                android:layout_width="180dp"
-                android:layout_height="33dp"
+                android:layout_width="170dp"
+                android:minHeight="32dp"
+                android:layout_height="wrap_content"
                 android:text="@string/event_title"
                 android:textAlignment="center"
                 android:textColor="#000000"

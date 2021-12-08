@@ -78,7 +78,7 @@
     <string name="club_name_placeholder">Club Name</string>
     <string name="placeholder_time">12:00:00</string>
     <string name="placeholder_short_event_description">Short Event Description</string>
-    <string name="placeholder_location">-----------Location-----------</string>
+    <string name="placeholder_location">--------Location--------</string>
     <string name="example_description_2">A wasp is any insect of the narrow-waisted suborder Apocrita of the order Hymenoptera which is neither a bee nor an ant. The wasps do not constitute a clade.</string>
     <string name="join">Join</string>
     <string name="event_title">Event Title</string>
@@ -90,7 +90,6 @@
     <string name="club_banner">Club Banner</string>
     <string name="upcoming_events">Upcoming Events:</string>
     <string name="register">Register</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_club">Create Club</string>
     <string name="save">Save</string>
@@ -98,6 +97,14 @@
     <string name="view">View</string>
     <string name="delete_event">Delete Event</string>
     <string name="registered">Registered:</string>
+    <string name="input_time_hint">Input Time (HH:MM:SS)</string>
+    <string name="eventified_logo">Eventified Logo</string>
+    <string name="input_date">Input Date (YYYY-MM-DD)</string>
+    <string name="create_event">Create Event</string>
+    <string name="title">Title</string>
+    <string name="location">Location</string>
+    <string name="description">Description</string>
+    <string name="event_logo">Event Owner Logo</string>
 
 
 </resources>
