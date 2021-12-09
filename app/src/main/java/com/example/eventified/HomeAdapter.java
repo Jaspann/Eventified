@@ -85,6 +85,10 @@ public class HomeAdapter extends RecyclerView.Adapter {
                     disTime = Integer.parseInt(disTime.substring(0, 2)) - 12 + disTime.substring(2);
                     disTime += " PM";
                 }
+                else if(Integer.parseInt(disTime.substring(0, 2)) == 12)
+                {
+                    disTime += " PM";
+                }
                 else
                 {
                     disTime += " AM";
@@ -104,6 +108,10 @@ public class HomeAdapter extends RecyclerView.Adapter {
                 if(Integer.parseInt(disTime.substring(0, 2)) > 12)
                 {
                     disTime = Integer.parseInt(disTime.substring(0, 2)) - 12 + disTime.substring(2);
+                    disTime += " PM";
+                }
+                else if(Integer.parseInt(disTime.substring(0, 2)) == 12)
+                {
                     disTime += " PM";
                 }
                 else

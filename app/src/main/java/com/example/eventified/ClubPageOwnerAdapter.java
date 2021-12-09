@@ -66,6 +66,10 @@ public class ClubPageOwnerAdapter extends RecyclerView.Adapter<ClubPageOwnerAdap
                 disTime = Integer.parseInt(disTime.substring(0, 2)) - 12 + disTime.substring(2);
                 disTime += " PM";
             }
+            else if(Integer.parseInt(disTime.substring(0, 2)) == 12)
+            {
+                disTime += " PM";
+            }
             else
             {
                 disTime += " AM";
