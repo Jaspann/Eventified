@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -128,4 +129,30 @@ public class ViewEventActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    public void onPressDeleteClubEvent(View view) {
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        String serverUrl = sharedPreferences.getString("putDeleteClubEvent", "");
+
+        serverUrl += "title=" + title.getText();
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest (Request.Method.PUT, serverUrl, null,
+
+                response -> {
+                    Toast.makeText(this, "Event Deleted", Toast.LENGTH_LONG).show();
+                    requestQueue.stop();
+                    finish();
+                },
+                error -> {
+                    Toast.makeText(this, "Error: something with deleting the event", Toast.LENGTH_LONG).show();
+                    error.printStackTrace();
+                    requestQueue.stop();
+                }) {
+        };
+        requestQueue.add(stringRequest);
+
+
+    }
 }

@@ -37,7 +37,8 @@
         android:text="@string/delete_event"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/event_card" />
+        app:layout_constraintTop_toBottomOf="@+id/event_card"
+        android:onClick="onPressDeleteClubEvent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/registered_list"

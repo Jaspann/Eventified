@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         editor.putString("getEventRegistered", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/geteventregistered?");
         editor.putString("putAddClubEvent", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/putaddclubevent?");
         editor.putString("putAddUserEvent", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/putadduserevent?");
+        editor.putString("putDeleteClubEvent", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/putdeleteclubevent?");
 
         editor.apply();
     }
