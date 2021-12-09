@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddClubEvent">
+    tools:context=".AddUserEvent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Add Club Event" />
+        app:title="Add Event" />
 
     <EditText
         android:id="@+id/edit_time"
@@ -29,7 +29,7 @@
         android:importantForAutofill="no"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_description" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_title" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -105,29 +105,5 @@
         android:inputType="textCapWords"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_event_text" />
-
-    <EditText
-        android:id="@+id/edit_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/location"
-        android:importantForAutofill="no"
-        android:inputType="textCapWords"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_title" />
-
-    <EditText
-        android:id="@+id/edit_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/description"
-        android:importantForAutofill="no"
-        android:inputType="textLongMessage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_location" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

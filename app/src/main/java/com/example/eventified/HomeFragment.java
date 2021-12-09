@@ -1,6 +1,7 @@
 package com.example.eventified;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +32,8 @@ import java.util.Objects;
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
+    String email;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,8 +56,29 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Button button = view.findViewById(R.id.add_event_user_button);
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AddUserEvent.class);
+            this.startActivity(intent);
+        });
+
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        fetchEventInfo(email);
+
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }
+        );
+
+        return view;
     }
 
     @MainThread
@@ -60,7 +86,7 @@ public class HomeFragment extends Fragment {
     {
         getContext();
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
-        String email = sharedPreferences.getString("email", "");
+        email = sharedPreferences.getString("email", "");
 
         fetchEventInfo(email);
     }

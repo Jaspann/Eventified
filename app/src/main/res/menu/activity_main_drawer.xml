@@ -24,21 +24,5 @@
                     android:title="@string/menu_member" />
             </menu>
         </item>
-        <item android:title="@string/account_menu">
-            <menu>
-                <item
-                    android:id="@+id/nav_profile"
-                    android:icon="@drawable/ic_baseline_person_24"
-                    android:title="@string/menu_profile" />
-                <item
-                    android:id="@+id/nav_calendar"
-                    android:icon="@drawable/ic_baseline_calendar_today_24"
-                    android:title="@string/menu_calendar" />
-                <item
-                    android:id="@+id/nav_settings"
-                    android:icon="@drawable/ic_baseline_settings_24"
-                    android:title="@string/menu_settings" />
-            </menu>
-        </item>
     </group>
 </menu>

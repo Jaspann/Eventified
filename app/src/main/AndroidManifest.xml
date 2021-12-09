@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Eventified"
         tools:replace="android:name">
         <activity
+            android:name=".AddUserEvent"
+            android:exported="false" />
+        <activity
             android:name=".AddClubEvent"
             android:exported="false" />
         <activity

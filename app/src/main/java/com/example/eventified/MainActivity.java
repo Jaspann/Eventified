@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
-    private Intent intent;
     private NavigationView navigationView;
 
     @Override
@@ -94,21 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new ClubListFragment()).commit();
                 toolbar.setTitle("Clubs");
                 break;
-            case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
-                toolbar.setTitle("Profile");
-                break;
-            case R.id.nav_calendar:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new CalendarFragment()).commit();
-                toolbar.setTitle("Calendar");
-                break;
-            case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SettingsFragment()).commit();
-                toolbar.setTitle("Settings");
-                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -129,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         editor.putString("getHomeEvents", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/gethomeevents?");
         editor.putString("getEventRegistered", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/geteventregistered?");
         editor.putString("putAddClubEvent", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/putaddclubevent?");
+        editor.putString("putAddUserEvent", "https://9dzzv631oi.execute-api.us-east-1.amazonaws.com/test/putadduserevent?");
 
         editor.apply();
     }
