@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Add Club Event" />
+        app:title="Add Club Event"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/edit_time"
@@ -28,6 +29,7 @@
         android:hint="@string/input_time_hint"
         android:importantForAutofill="no"
         android:inputType="time"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_description" />
 
@@ -81,6 +83,7 @@
         android:hint="@string/input_date"
         android:importantForAutofill="no"
         android:inputType="date"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/edit_time"
         app:layout_constraintTop_toBottomOf="@+id/edit_time" />
 
@@ -103,6 +106,7 @@
         android:hint="@string/title"
         android:importantForAutofill="no"
         android:inputType="textCapWords"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_event_text" />
 
@@ -114,6 +118,7 @@
         android:hint="@string/location"
         android:importantForAutofill="no"
         android:inputType="textCapWords"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_title" />
 
@@ -124,10 +129,12 @@
         android:layout_marginTop="16dp"
         android:hint="@string/description"
         android:importantForAutofill="no"
-        android:inputType="textLongMessage"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_location" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
