@@ -146,7 +146,7 @@ public class ViewEventActivity extends AppCompatActivity {
                     finish();
                 },
                 error -> {
-                    Toast.makeText(this, "Error: something with deleting the event", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Error: something with deleting the event went wron", Toast.LENGTH_LONG).show();
                     error.printStackTrace();
                     requestQueue.stop();
                 }) {
